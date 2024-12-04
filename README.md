@@ -45,13 +45,4 @@
 ###
 
 <br clear="both">
-
-<img src="https://raw.githubusercontent.com/Prasoon-Rai/Prasoon-Rai/output/snake.svg" alt="Snake animation" />
-
-###
-
-<div align="left">
-  <img src="novatorem-6nixjq0kn-prasoon-s-projects.vercel.app?" alt="Widget with the current Spotify song"  />
-</div>
-
 ###
