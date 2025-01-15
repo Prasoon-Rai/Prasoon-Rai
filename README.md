@@ -48,22 +48,8 @@ Hi there! I'm a 17-year-old high school student with a passion for coding. I spe
 </td><td valign="top" width="50%">
 
 
-
-</td></tr></table>  
-
-<br/>  
-
-  
-
-<br/>  
-
 ![Profile views counter](https://komarev.com/ghpvc/?username=Prasoon-Rai&&style=flat-square)  
   
-
-<br/>  
-
-
-<br />
 
 ----
 <div align="center">Generated using <a href="https://profilinator.rishav.dev/" target="_blank">Github Profilinator</a></div>
