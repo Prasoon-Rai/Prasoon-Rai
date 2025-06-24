@@ -12,9 +12,8 @@
 
 ### 🚀 About Me
 - 🧠 I'm a 17 y/o developer diving deep into **AI & ML**
-- 🔬 Currently working with **PyTorch** and **C** for cool CS50 and AI projects
-- 🧑‍💻 Obsessed with learning how intelligence works — human *and* machine
-- 🌐 Love building full-stack stuff and deploying to **Vercel**
+- 🔬 Currently working with **TensorFlow** and **C** for cool CS50 and AI projects
+- 🧑‍💻 Love learning how intelligence works — human *and* machine
 
 ---
 
