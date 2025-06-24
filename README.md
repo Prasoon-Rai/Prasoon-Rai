@@ -19,7 +19,7 @@
 
 ### 🧰 Languages & Tools
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=python,cpp,cs,html,css,js,react,flask,sqlite,bash,vscode,vercel" />
+  <img src="https://skillicons.dev/icons?i=python,cpp,pytorch,tensorflow,bash,vscode" />
 </p>
 
 ---
