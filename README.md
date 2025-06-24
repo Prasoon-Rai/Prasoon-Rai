@@ -1,6 +1,6 @@
 <h1 align="center">Hey there 👋, I'm Prasoon Rai</h1>
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=00F7FF&center=true&vCenter=true&width=435&lines=Teen+AI+%2F+ML+Developer;Full-Stack+Tech+Explorer;Coding+since+age+10+%F0%9F%93%B1;Building+and+Breaking+Stuff+Everyday" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=00F7FF&center=true&vCenter=true&width=435&lines=Teen+AI+%2F+ML+Developer;;Coding+since+age+10+%F0%9F%93%B1;Building+and+Breaking+Stuff+Everyday" alt="Typing SVG" />
 </p>
 
 <p align="center">
