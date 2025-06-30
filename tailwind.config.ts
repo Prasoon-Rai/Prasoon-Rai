@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,13 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				electric: '#0080ff',
+				neon: '#00ff88',
+				brutal: {
+					black: '#000000',
+					white: '#ffffff',
+					gray: '#808080'
 				}
 			},
 			borderRadius: {
@@ -68,27 +76,40 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			fontFamily: {
+				'jetbrains': ['JetBrains Mono', 'monospace'],
+				'space': ['Space Grotesk', 'sans-serif'],
+			},
 			keyframes: {
-				'accordion-down': {
-					from: {
-						height: '0'
+				'float': {
+					'0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+					'50%': { transform: 'translateY(-20px) rotate(5deg)' }
+				},
+				'pulse-glow': {
+					'0%, 100%': { 
+						'box-shadow': '0 0 20px rgba(0, 255, 136, 0.3)',
+						'border-color': 'rgba(0, 255, 136, 0.3)'
 					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
+					'50%': { 
+						'box-shadow': '0 0 40px rgba(0, 255, 136, 0.6)',
+						'border-color': 'rgba(0, 255, 136, 0.6)'
 					}
 				},
-				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
+				'brutalist-slide': {
+					'0%': { 
+						transform: 'translateX(-100%) skew(-10deg)',
+						opacity: '0'
 					},
-					to: {
-						height: '0'
+					'100%': { 
+						transform: 'translateX(0) skew(0deg)',
+						opacity: '1'
 					}
 				}
 			},
 			animation: {
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'float': 'float 6s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+				'brutalist-slide': 'brutalist-slide 0.8s ease-out'
 			}
 		}
 	},
