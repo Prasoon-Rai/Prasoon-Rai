@@ -20,56 +20,78 @@ export const Projects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Mock data for demonstration - replace with actual GitHub API call
   useEffect(() => {
-    // Simulating API call
-    const mockProjects: Project[] = [
-      {
-        id: 1,
-        name: "Portfolio-Website",
-        description: "A brutalist-inspired personal portfolio showcasing projects and skills with interactive 3D elements.",
-        html_url: "https://github.com/Prasoon-Rai/portfolio",
-        topics: ["react", "threejs", "tailwindcss", "typescript"],
-        language: "TypeScript",
-        stargazers_count: 12,
-        updated_at: "2024-01-15T10:30:00Z"
-      },
-      {
-        id: 2,
-        name: "AI-Chat-Bot",
-        description: "An intelligent chatbot built with machine learning capabilities for natural language processing.",
-        html_url: "https://github.com/Prasoon-Rai/ai-chatbot",
-        topics: ["python", "ai", "machine-learning", "nlp"],
-        language: "Python",
-        stargazers_count: 8,
-        updated_at: "2024-01-10T14:20:00Z"
-      },
-      {
-        id: 3,
-        name: "Task-Manager-App",
-        description: "A modern task management application with real-time collaboration and deadline tracking.",
-        html_url: "https://github.com/Prasoon-Rai/task-manager",
-        topics: ["react", "nodejs", "mongodb", "socket.io"],
-        language: "JavaScript",
-        stargazers_count: 15,
-        updated_at: "2024-01-08T09:15:00Z"
-      },
-      {
-        id: 4,
-        name: "Weather-Dashboard",
-        description: "A comprehensive weather dashboard with detailed forecasts and interactive maps.",
-        html_url: "https://github.com/Prasoon-Rai/weather-dashboard",
-        topics: ["vue", "api", "charts", "responsive"],
-        language: "Vue",
-        stargazers_count: 6,
-        updated_at: "2024-01-05T16:45:00Z"
+    // Fetch pinned repositories from GitHub API
+    const fetchPinnedRepos = async () => {
+      try {
+        // Note: GitHub doesn't have a direct API for pinned repos, so we'll use regular repos
+        // In a real implementation, you might want to use GitHub GraphQL API for pinned repos
+        const response = await fetch('https://api.github.com/users/Prasoon-Rai/repos?sort=updated&per_page=6');
+        const repos = await response.json();
+        
+        const formattedProjects = repos.map((repo: any) => ({
+          id: repo.id,
+          name: repo.name,
+          description: repo.description || "A project built with passion and code.",
+          html_url: repo.html_url,
+          topics: repo.topics || [],
+          language: repo.language || "JavaScript",
+          stargazers_count: repo.stargazers_count,
+          updated_at: repo.updated_at
+        }));
+        
+        setProjects(formattedProjects);
+      } catch (error) {
+        console.error('Error fetching GitHub repos:', error);
+        // Fallback to mock data if API fails
+        setProjects([
+          {
+            id: 1,
+            name: "Portfolio-Website",
+            description: "A brutalist-inspired personal portfolio showcasing projects and skills with interactive 3D elements.",
+            html_url: "https://github.com/Prasoon-Rai/portfolio",
+            topics: ["react", "threejs", "tailwindcss", "typescript"],
+            language: "TypeScript",
+            stargazers_count: 12,
+            updated_at: "2024-01-15T10:30:00Z"
+          },
+          {
+            id: 2,
+            name: "AI-Chat-Bot",
+            description: "An intelligent chatbot built with machine learning capabilities for natural language processing.",
+            html_url: "https://github.com/Prasoon-Rai/ai-chatbot",
+            topics: ["python", "ai", "machine-learning", "nlp"],
+            language: "Python",
+            stargazers_count: 8,
+            updated_at: "2024-01-10T14:20:00Z"
+          },
+          {
+            id: 3,
+            name: "Task-Manager-App",
+            description: "A modern task management application with real-time collaboration and deadline tracking.",
+            html_url: "https://github.com/Prasoon-Rai/task-manager",
+            topics: ["react", "nodejs", "mongodb", "socket.io"],
+            language: "JavaScript",
+            stargazers_count: 15,
+            updated_at: "2024-01-08T09:15:00Z"
+          },
+          {
+            id: 4,
+            name: "Weather-Dashboard",
+            description: "A comprehensive weather dashboard with detailed forecasts and interactive maps.",
+            html_url: "https://github.com/Prasoon-Rai/weather-dashboard",
+            topics: ["vue", "api", "charts", "responsive"],
+            language: "Vue",
+            stargazers_count: 6,
+            updated_at: "2024-01-05T16:45:00Z"
+          }
+        ]);
+      } finally {
+        setLoading(false);
       }
-    ];
+    };
 
-    setTimeout(() => {
-      setProjects(mockProjects);
-      setLoading(false);
-    }, 1000);
+    fetchPinnedRepos();
   }, []);
 
   const ProjectCard = ({ project, index }: { project: Project; index: number }) => (
