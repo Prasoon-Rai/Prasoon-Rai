@@ -17,16 +17,18 @@ export const Navigation = () => {
       const sections = navItems.map(item => document.getElementById(item.id));
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
-      sections.forEach((section, index) => {
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
         if (section) {
           const sectionTop = section.offsetTop;
           const sectionBottom = sectionTop + section.offsetHeight;
           
           if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            setActiveSection(navItems[index].id);
+            setActiveSection(navItems[i].id);
+            break;
           }
         }
-      });
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -62,7 +64,7 @@ export const Navigation = () => {
               <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`relative font-space font-bold text-sm tracking-widest px-4 py-2 transition-all duration-300 ${
+                className={`relative font-space font-bold text-sm tracking-widest px-4 py-2 transition-all duration-200 ${
                   activeSection === item.id
                     ? 'text-white bg-black'
                     : 'text-black hover:text-electric'
