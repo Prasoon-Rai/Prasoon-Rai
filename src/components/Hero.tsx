@@ -70,17 +70,17 @@ export const Hero = () => {
                 href="https://github.com/Prasoon-Rai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative bg-neon text-black px-8 py-4 font-space font-bold text-lg tracking-wider transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-electric hover:text-black"
+                className="group relative bg-neon text-black px-8 py-4 font-space font-bold text-lg tracking-wider transform transition-all duration-200 hover:scale-105 hover:shadow-2xl hover:bg-electric"
                 whileHover={{ y: -5 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <span className="relative z-10">VIEW GITHUB</span>
-                <div className="absolute inset-0 bg-black transform translate-x-2 translate-y-2 -z-10 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300"></div>
+                <div className="absolute inset-0 bg-black transform translate-x-2 translate-y-2 -z-10 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-200"></div>
               </motion.a>
 
               <motion.button
                 onClick={downloadCV}
-                className="group relative border-4 border-black bg-white text-black px-8 py-4 font-space font-bold text-lg tracking-wider transform transition-all duration-300 hover:bg-black hover:text-white"
+                className="group relative border-4 border-black bg-white text-black px-8 py-4 font-space font-bold text-lg tracking-wider transform transition-all duration-200 hover:bg-black hover:text-white"
                 whileHover={{ y: -5 }}
                 whileTap={{ scale: 0.95 }}
               >
