@@ -60,7 +60,7 @@ export const About = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              {['REACT', 'JAVASCRIPT', 'PYTHON', 'NODE.JS', 'GIT', 'FIGMA'].map((skill, index) => (
+              {['TENSORFLOW', 'PYTORCH', 'PYTHON', 'LLAMA', 'GIT', 'NUMPY'].map((skill, index) => (
                 <motion.span
                   key={skill}
                   className="border-2 border-electric text-electric px-4 py-2 font-jetbrains font-bold text-sm tracking-widest hover:bg-electric hover:text-black transition-all duration-300 cursor-default"
