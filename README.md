@@ -1,73 +1,40 @@
-# Welcome to your Lovable project
+<h1 align="center">Hey there 👋, I'm Prasoon Rai</h1>
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=00F7FF&center=true&vCenter=true&width=435&lines=Teen+AI+%2F+ML+Developer;;Coding+since+age+10+%F0%9F%93%B1;Building+and+Breaking+Stuff+Everyday" alt="Typing SVG" />
+</p>
 
-## Project info
+<p align="center">
+  <a href="https://ra1.vercel.app" target="_blank"><img src="https://img.shields.io/badge/Visit%20My%20Website-000000?style=for-the-badge&logo=vercel&logoColor=white" /></a>
+</p>
 
-**URL**: https://lovable.dev/projects/9719befb-3083-478d-a627-2b8bd306e063
+---
 
-## How can I edit this code?
+### 🚀 About Me
+- 🧠 I'm a 17 y/o developer diving deep into **AI & ML**
+- 🔬 Currently working with **TensorFlow** and **C** for cool CS50 and AI projects
+- 🧑‍💻 Love learning how intelligence works — human *and* machine
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+### 🧰 Languages & Tools
+<p align="left">
+  <img src="https://skillicons.dev/icons?i=python,cpp,pytorch,tensorflow,bash,vscode" />
+</p>
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/9719befb-3083-478d-a627-2b8bd306e063) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+### 🧠 Current Focus
+- Learning: Neural Nets 🧠, CS50 💻, and TensorFlow 🔥
+- Projects: Image classifiers, Spell Checkers, and more
+- Goal: Build something mind-blowing before I turn 18 😤
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 🔗 Let's Connect
+- 🌐 Website: [ra1.vercel.app](https://ra1.vercel.app)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/9719befb-3083-478d-a627-2b8bd306e063) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+<p align="center">
+  <img src="https://media.giphy.com/media/coxQHKASG60HrHtvkt/giphy.gif" width="300"/>
+</p>
