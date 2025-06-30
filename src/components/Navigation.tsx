@@ -54,7 +54,7 @@ export const Navigation = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            PR.DEV
+            PR.TECH
           </motion.div>
           
           <div className="hidden md:flex space-x-8">

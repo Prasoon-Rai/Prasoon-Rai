@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 import { ThreeScene } from './ThreeScene';
 
 export const Hero = () => {
-  const scrollToProjects = () => {
-    const element = document.getElementById('projects');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const downloadCV = () => {
+    const link = document.createElement('a');
+    link.href = '/cv.pdf';
+    link.download = 'Prasoon_Rai_CV.pdf';
+    link.click();
   };
 
   return (
@@ -66,26 +66,26 @@ export const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
             >
-              <motion.button
-                onClick={scrollToProjects}
-                className="group relative bg-neon text-black px-8 py-4 font-space font-bold text-lg tracking-wider transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-black hover:text-white"
-                whileHover={{ y: -5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span className="relative z-10">EXPLORE MY WORK</span>
-                <div className="absolute inset-0 bg-black transform translate-x-2 translate-y-2 -z-10 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300"></div>
-              </motion.button>
-
               <motion.a
                 href="https://github.com/Prasoon-Rai"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="group relative bg-neon text-black px-8 py-4 font-space font-bold text-lg tracking-wider transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-electric hover:text-black"
+                whileHover={{ y: -5 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="relative z-10">VIEW GITHUB</span>
+                <div className="absolute inset-0 bg-black transform translate-x-2 translate-y-2 -z-10 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300"></div>
+              </motion.a>
+
+              <motion.button
+                onClick={downloadCV}
                 className="group relative border-4 border-black bg-white text-black px-8 py-4 font-space font-bold text-lg tracking-wider transform transition-all duration-300 hover:bg-black hover:text-white"
                 whileHover={{ y: -5 }}
                 whileTap={{ scale: 0.95 }}
               >
-                VIEW GITHUB
-              </motion.a>
+                DOWNLOAD CV
+              </motion.button>
             </motion.div>
 
             {/* Scroll indicator */}
