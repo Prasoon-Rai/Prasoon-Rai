@@ -37,20 +37,18 @@ export const About = () => {
             >
               <p className="font-space text-lg md:text-xl leading-relaxed text-gray-300">
                 I'm <span className="text-white font-bold">Prasoon Rai</span>, a 17-year-old developer 
-                from <span className="text-neon font-bold">Noida, India</span>. Currently navigating 
-                through high school while diving deep into the world of technology and innovation.
+                a 17-year-old AI/DL developer from<span className="text-neon font-bold">Noida, India</span>
+                I started coding at 10 and quickly developed a passion for Artificial Intelligence and Deep Learning.
+              </p>
+              
+              <p className="font-space text-lg md:text-xl leading-relaxed text-gray-300">
+                I'm proficient in <span className="text-neon font-bold">TensorFlow, PyTorch, and Keras, </span>using these frameworks to build practical AI solutions. 
+                I love turning complex ideas into working applications.
               </p>
 
               <p className="font-space text-lg md:text-xl leading-relaxed text-gray-300">
-                My journey in programming started with curiosity and has evolved into a passion for 
-                creating solutions that matter. I believe in learning by building, and every project 
-                is an opportunity to push boundaries and explore new possibilities.
-              </p>
-
-              <p className="font-space text-lg md:text-xl leading-relaxed text-gray-300">
-                When I'm not coding, you'll find me exploring emerging technologies, contributing to 
-                open-source projects, or sketching ideas for the next big thing. The future is being 
-                built today, and I want to be part of that story.
+                My goal is to study abroad and become a <span className="text-white font-bold">Computer Science Engineer </span> 
+                I'm excited to innovate in the tech world and contribute to the future of AI.
               </p>
             </motion.div>
 
@@ -60,7 +58,7 @@ export const About = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              {['TENSORFLOW', 'PYTORCH', 'PYTHON', 'LLAMA', 'GIT', 'NUMPY'].map((skill, index) => (
+              {['TENSORFLOW', 'PYTORCH', 'PYTHON', 'LLAMA', 'GIT', 'KERAS'].map((skill, index) => (
                 <motion.span
                   key={skill}
                   className="border-2 border-electric text-electric px-4 py-2 font-jetbrains font-bold text-sm tracking-widest hover:bg-electric hover:text-black transition-all duration-300 cursor-default"
