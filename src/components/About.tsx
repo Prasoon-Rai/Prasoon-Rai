@@ -37,12 +37,12 @@ export const About = () => {
             >
               <p className="font-space text-lg md:text-xl leading-relaxed text-gray-300">
                 I'm <span className="text-white font-bold">Prasoon Rai</span>, a 17-year-old developer 
-                a 17-year-old AI/DL developer from<span className="text-neon font-bold">Noida, India</span>
+                a 17-year-old AI/DL developer from <span className="text-neon font-bold">Noida, India </span>
                 I started coding at 10 and quickly developed a passion for Artificial Intelligence and Deep Learning.
               </p>
               
               <p className="font-space text-lg md:text-xl leading-relaxed text-gray-300">
-                I'm proficient in <span className="text-neon font-bold">TensorFlow, PyTorch, and Keras, </span>using these frameworks to build practical AI solutions. 
+                I'm proficient in <span className="text-neon font-bold">TensorFlow, PyTorch, and Keras </span>using these frameworks to build practical AI solutions. 
                 I love turning complex ideas into working applications.
               </p>
 
