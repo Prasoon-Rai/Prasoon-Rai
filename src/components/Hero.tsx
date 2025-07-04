@@ -69,11 +69,12 @@ export const Hero = () => {
                 href="https://github.com/Prasoon-Rai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative bg-black text-neon px-8 py-4 font-space font-bold text-lg tracking-wider transform transition-all duration-200 hover:scale-105 hover:shadow-2xl"
+                // Initial: black background, white text. On hover: green background, black text.
+                className="group relative bg-black text-white px-8 py-4 font-space font-bold text-lg tracking-wider transform transition-all duration-200 hover:scale-105 hover:shadow-2xl"
                 whileHover={{ y: -5 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span className="relative z-10 group-hover:text-white transition-colors duration-200">VIEW GITHUB</span>
+                <span className="relative z-10 group-hover:text-black transition-colors duration-200">VIEW GITHUB</span>
                 <div className="absolute inset-0 bg-neon transform translate-x-2 translate-y-2 -z-10 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:z-0 transition-all duration-200"></div>
               </motion.a>
 
