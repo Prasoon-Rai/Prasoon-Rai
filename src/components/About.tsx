@@ -36,8 +36,8 @@ export const About = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <p className="font-space text-lg md:text-xl leading-relaxed text-gray-300">
-                I'm <span className="text-white font-bold">Prasoon Rai</span>, a 17-year-old developer 
-                a 17-year-old AI/DL developer from <span className="text-neon font-bold">Noida, India </span>
+                I'm <span className="text-white font-bold">Prasoon Rai</span>,
+                a 17-year-old AI/DL programmer from <span className="text-neon font-bold">Noida, India </span>
                 I started coding at 10 and quickly developed a passion for Artificial Intelligence and Deep Learning.
               </p>
               
