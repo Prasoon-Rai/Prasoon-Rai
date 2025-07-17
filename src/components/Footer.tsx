@@ -3,8 +3,6 @@ import { motion } from 'framer-motion';
 
 export const Footer = () => {
   return (
-    <footer className="bg-white border-t-4 border-black py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Bottom section */}
         <motion.div
           className="mt-12 pt-8 border-t-2 border-gray-200 text-center"
