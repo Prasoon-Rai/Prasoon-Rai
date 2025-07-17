@@ -165,7 +165,7 @@ export const Projects = () => {
           </h2>
           <div className="bg-black text-white px-8 py-4 inline-block transform -skew-x-3">
             <p className="brutalist-mono text-lg">
-              BUILDING THE FUTURE, ONE COMMIT AT A TIME
+              SOME OF MY BEST PROJECTS
             </p>
           </div>
         </motion.div>
