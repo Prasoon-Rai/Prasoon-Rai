@@ -41,7 +41,7 @@ export const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
                 <p className="brutalist-mono text-lg md:text-xl">
-                  HIGH SCHOOL DEVELOPER | INNOVATOR | CREATOR
+                  HIGH SCHOOL STUDENT / DEVELOPER
                 </p>
               </motion.div>
             </div>
@@ -55,7 +55,6 @@ export const Hero = () => {
             >
               17 years old from <span className="font-bold text-black">Noida, India</span>
               <br />
-              Building the future, one line of code at a time.
             </motion.p>
 
             {/* CTA Buttons */}
