@@ -11,7 +11,7 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mt-12 pt-8 border-t-2 border-gray-200 text-center">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="font-jetbrains text-sm text-gray-600">© 2024 PRASOON RAI. ALL RIGHTS RESERVED.</p>
+            <p className="font-jetbrains text-sm text-gray-600">© 2025 PRASOON RAI. ALL RIGHTS RESERVED.</p>
             <p className="font-jetbrains text-sm text-gray-600">MADE WITH <span className="text-neon">❤</span> IN NOIDA, INDIA</p>
           </div>
         </div>
