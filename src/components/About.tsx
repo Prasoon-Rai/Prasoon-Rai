@@ -102,7 +102,7 @@ const ThreeScene = () => {
 
 
 // --- The Main About Component ---
-const App = () => {
+export const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -176,5 +176,3 @@ const App = () => {
     </section>
   );
 };
-
-export default App;
