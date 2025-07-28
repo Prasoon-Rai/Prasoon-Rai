@@ -23,8 +23,9 @@ const FloatingShape = () => {
   const [sides, setSides] = useState(3); // Start with a triangle
 
   // Refs to hold position and velocity to avoid re-renders on each frame
+  // Increased the velocity multiplier from 0.02 to 0.04 for more speed
   const position = useRef([ (Math.random() - 0.5) * 5, (Math.random() - 0.5) * 5, 0]);
-  const velocity = useRef([ (Math.random() - 0.5) * 0.02, (Math.random() - 0.5) * 0.02, 0]);
+  const velocity = useRef([ (Math.random() - 0.5) * 0.04, (Math.random() - 0.5) * 0.04, 0]);
   
   // Memoize the geometry so it only recalculates when 'sides' changes
   const geometry = useMemo(() => {
@@ -74,9 +75,9 @@ const FloatingShape = () => {
   return (
     <mesh ref={meshRef} geometry={geometry}>
       <meshStandardMaterial 
-        color="#00ffff" 
+        color="#00ff88" 
         wireframe 
-        emissive="#00ffff" // Makes the color glow
+        emissive="#00ff88" // Makes the color glow
         emissiveIntensity={0.5}
       />
     </mesh>
@@ -126,7 +127,7 @@ export const About = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              ABOUT <span className="text-[#00ffff]">ME</span>
+              ABOUT <span className="text-[#00ff88]">ME</span>
             </motion.h2>
 
             <motion.div
@@ -137,12 +138,12 @@ export const About = () => {
             >
               <p className="text-lg md:text-xl leading-relaxed text-gray-300">
                 I'm <span className="text-white font-bold">Prasoon Rai</span>,
-                a 17-year-old AI/DL programmer from <span className="text-[#00ffff] font-bold">Noida, India</span>.
+                a 17-year-old AI/DL programmer from <span className="text-[#00ff88] font-bold">Noida, India</span>.
                 I started coding at 10 and quickly developed a passion for Artificial Intelligence and Deep Learning.
               </p>
 
               <p className="text-lg md:text-xl leading-relaxed text-gray-300">
-                I'm proficient in <span className="text-[#00ffff] font-bold">TensorFlow, PyTorch, and Keras</span>, using these frameworks to build practical AI solutions.
+                I'm proficient in <span className="text-[#00ff88] font-bold">TensorFlow, PyTorch, and Keras</span>, using these frameworks to build practical AI solutions.
                 I love turning complex ideas into working applications.
               </p>
 
@@ -161,11 +162,11 @@ export const About = () => {
               {['TENSORFLOW', 'PYTORCH', 'PYTHON', 'LLAMA', 'GIT', 'KERAS'].map((skill, index) => (
                 <motion.span
                   key={skill}
-                  className="border-2 border-[#00ffff] text-[#00ffff] px-4 py-2 font-mono font-bold text-sm tracking-widest hover:bg-[#00ffff] hover:text-black transition-all duration-300 cursor-default rounded-md"
+                  className="border-2 border-[#00ff88] text-[#00ff88] px-4 py-2 font-mono font-bold text-sm tracking-widest hover:bg-[#00ff88] hover:text-black transition-all duration-300 cursor-default rounded-md"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                  whileHover={{ scale: 1.05, boxShadow: '0 0 15px #00ffff' }}
+                  whileHover={{ scale: 1.05, boxShadow: '0 0 15px #00ff88' }}
                 >
                   {skill}
                 </motion.span>
