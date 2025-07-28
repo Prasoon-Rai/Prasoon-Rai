@@ -1,195 +1,92 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Float } from '@react-three/drei';
-import * as THREE from 'three';
 
-// --- Start of Three.js Components (Copied from your provided code) ---
+const AbstractDigitalStream = () => {
+  const characters = ['{', '}', '<', '>', '/', '-', '_', '=', ';', '&', '$', '#', '0', '1'];
 
-const NeuralNetworkOrb = ({ position }: { position: [number, number, number] }) => {
-  const meshRef = useRef<THREE.Mesh>(null);
-  
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x += 0.005;
-      meshRef.current.rotation.y += 0.01;
-      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime) * 0.3;
-    }
-  });
+  const glitchVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: (i) => ({
+      opacity: [0, 1, 0.5, 1, 0], // Flicker effect
+      y: [20, 0, -5, 0, -20],     // Slight vertical movement
+      x: [0, Math.random() * 5 - 2.5, Math.random() * 5 - 2.5, 0], // Slight horizontal jitter
+      transition: {
+        duration: Math.random() * 3 + 2, // Random duration for varied feel
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "easeInOut",
+        delay: Math.random() * 2 + i * 0.1, // Staggered and random initial delay
+      },
+    }),
+  };
 
-  return (
-    <Float speed={3} rotationIntensity={0.5} floatIntensity={0.3}>
-      <mesh ref={meshRef} position={position}>
-        <icosahedronGeometry args={[0.8, 1]} />
-        <meshStandardMaterial color="#0080ff" wireframe opacity={0.7} transparent />
-      </mesh>
-    </Float>
-  );
-};
-
-const PredictionPrism = ({ position }: { position: [number, number, number] }) => {
-  const meshRef = useRef<THREE.Mesh>(null);
-  
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x += 0.008;
-      meshRef.current.rotation.z += 0.005;
-      meshRef.current.position.x = position[0] + Math.cos(state.clock.elapsedTime * 0.8) * 0.4;
-    }
-  });
+  const lineVariants = {
+    initial: { scaleX: 0, opacity: 0 },
+    animate: (i) => ({
+      scaleX: [0, 1, 0.5, 1, 0], // Grow, shrink, grow, disappear
+      opacity: [0, 1, 0.7, 1, 0],
+      transition: {
+        duration: Math.random() * 4 + 3,
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "easeInOut",
+        delay: Math.random() * 1.5 + i * 0.2,
+      },
+    }),
+  };
 
   return (
-    <mesh ref={meshRef} position={position}>
-      <octahedronGeometry args={[1, 0]} />
-      <meshStandardMaterial color="#00ff88" wireframe />
-    </mesh>
-  );
-};
+    <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+      {/* Background data lines / flickering grid */}
+      {Array.from({ length: 10 }).map((_, i) => (
+        <motion.div
+          key={`bg-line-${i}`}
+          className="absolute h-px bg-electric-glow" // Use bg-electric-glow for a thin glowing line
+          style={{
+            width: `${Math.random() * 80 + 20}%`, // Random width for variety
+            top: `${10 + i * 8}%`, // Position vertically
+            left: `${Math.random() * 20}%`, // Slight horizontal offset
+            boxShadow: '0 0 8px var(--color-electric)',
+            opacity: 0.2,
+          }}
+          variants={lineVariants}
+          initial="initial"
+          animate="animate"
+          custom={i}
+        />
+      ))}
 
-const BiasBloom = ({ position }: { position: [number, number, number] }) => {
-  const groupRef = useRef<THREE.Group>(null);
-  
-  useFrame((state) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y += 0.01;
-      groupRef.current.position.z = position[2] + Math.sin(state.clock.elapsedTime * 1.2) * 0.2;
-    }
-  });
-
-  return (
-    <Float speed={2} rotationIntensity={1} floatIntensity={0.4}>
-      <group ref={groupRef} position={position}>
-        {/* Central core */}
-        <mesh>
-          <dodecahedronGeometry args={[0.4, 0]} />
-          <meshStandardMaterial color="#ffffff" wireframe />
-        </mesh>
-        {/* Orbiting elements */}
-        {Array.from({ length: 6 }).map((_, i) => (
-          <mesh
-            key={i}
-            position={[
-              Math.cos((i / 6) * Math.PI * 2) * 1.2,
-              Math.sin((i / 6) * Math.PI * 2) * 1.2,
-              0
-            ]}
+      {/* Abstract Glitchy Code Fragments */}
+      <div className="absolute inset-0 flex flex-wrap content-around justify-center text-center p-4">
+        {Array.from({ length: 40 }).map((_, i) => (
+          <motion.span
+            key={`char-${i}`}
+            className="font-jetbrains text-lg md:text-xl text-neon-glow leading-none m-1" // neon-glow for text
+            variants={glitchVariants}
+            initial="initial"
+            animate="animate"
+            custom={i}
+            style={{ textShadow: '0 0 10px var(--color-neon)' }} // Text glow
           >
-            <tetrahedronGeometry args={[0.2, 0]} />
-            <meshStandardMaterial color="#00ff88" wireframe />
-          </mesh>
+            {characters[Math.floor(Math.random() * characters.length)]}
+          </motion.span>
         ))}
-      </group>
-    </Float>
-  );
-};
+      </div>
 
-const AlgorithmTotem = ({ position }: { position: [number, number, number] }) => {
-  const groupRef = useRef<THREE.Group>(null);
-  
-  useFrame((state) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.x += 0.003;
-      groupRef.current.rotation.y += 0.006;
-      groupRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.7) * 0.5;
-    }
-  });
-
-  return (
-    <group ref={groupRef} position={position}>
-      {/* Base */}
-      <mesh position={[0, -0.8, 0]}>
-        <cylinderGeometry args={[0.6, 0.8, 0.3, 8]} />
-        <meshStandardMaterial color="#0080ff" wireframe />
-      </mesh>
-      {/* Middle */}
-      <mesh position={[0, 0, 0]}>
-        <cylinderGeometry args={[0.4, 0.6, 0.8, 6]} />
-        <meshStandardMaterial color="#ffffff" wireframe />
-      </mesh>
-      {/* Top */}
-      <mesh position={[0, 0.8, 0]}>
-        <coneGeometry args={[0.4, 0.6, 4]} />
-        <meshStandardMaterial color="#00ff88" wireframe />
-      </mesh>
-    </group>
-  );
-};
-
-const DataFlowLines = () => {
-  const linesRef = useRef<THREE.Group>(null);
-  
-  useFrame((state) => {
-    if (linesRef.current) {
-      linesRef.current.rotation.z += 0.002;
-    }
-  });
-
-  return (
-    <group ref={linesRef}>
-      {/* Grid lines */}
-      {Array.from({ length: 20 }).map((_, i) => (
-        <mesh
-          key={`vertical-${i}`}
-          position={[i * 2 - 20, 0, -5]}
-          rotation={[0, 0, 0]}
-        >
-          <cylinderGeometry args={[0.01, 0.01, 40]} />
-          <meshStandardMaterial color="#ffffff" opacity={0.1} transparent />
-        </mesh>
-      ))}
-      {Array.from({ length: 20 }).map((_, i) => (
-        <mesh
-          key={`horizontal-${i}`}
-          position={[0, i * 2 - 20, -5]}
-          rotation={[0, 0, Math.PI / 2]}
-        >
-          <cylinderGeometry args={[0.01, 0.01, 40]} />
-          <meshStandardMaterial color="#ffffff" opacity={0.1} transparent />
-        </mesh>
-      ))}
-    </group>
-  );
-};
-
-const AIShapes = () => {
-  return (
-    <>
-      <NeuralNetworkOrb position={[-3, 1, -2]} />
-      <PredictionPrism position={[3, -1, -1]} />
-      <BiasBloom position={[0, 2, -3]} />
-      <AlgorithmTotem position={[-1, -2, 0]} />
-      <DataFlowLines />
-    </>
-  );
-};
-
-// This is the main Three.js scene container
-const ThreeScene = () => {
-  return (
-    <Canvas
-      camera={{ position: [0, 0, 8], fov: 50 }}
-      gl={{ antialias: true, alpha: true }}
-    >
-      <ambientLight intensity={0.4} />
-      <pointLight position={[10, 10, 10]} intensity={0.8} />
-      <directionalLight position={[-10, -10, -5]} intensity={0.3} />
-      
-      <AIShapes />
-      
-      <OrbitControls
-        enableZoom={false}
-        enablePan={false}
-        enableRotate={true}
-        autoRotate={true}
-        autoRotateSpeed={0.3}
-        maxPolarAngle={Math.PI / 2}
-        minPolarAngle={Math.PI / 2}
+       {/* Central pulsating highlight for focus */}
+       <motion.div
+        className="absolute w-32 h-32 rounded-full bg-white opacity-5"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.05, 0.15, 0.05],
+        }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        style={{ filter: 'blur(30px)' }}
       />
-    </Canvas>
+    </div>
   );
 };
-
-// --- End of Three.js Components ---
+// --- End of AbstractDigitalStream Component ---
 
 
 export const About = () => {
@@ -229,7 +126,7 @@ export const About = () => {
                 a 17-year-old AI/DL programmer from <span className="text-neon font-bold">Noida, India </span>
                 I started coding at 10 and quickly developed a passion for Artificial Intelligence and Deep Learning.
               </p>
-              
+
               <p className="font-space text-lg md:text-xl leading-relaxed text-gray-300">
                 I'm proficient in <span className="text-neon font-bold">TensorFlow, PyTorch, and Keras </span>using these frameworks to build practical AI solutions.
                 I love turning complex ideas into working applications.
@@ -262,14 +159,14 @@ export const About = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right side - Visual element (Three.js Scene) */}
+          {/* Right side - Visual element (Animated Digital Stream) */}
           <motion.div
             className="relative w-full h-96"
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            {/* The canvas container needs `absolute inset-0` to fill the parent `relative` div */}
+            {/* These outer frames and decorative elements are kept for the brutalist style */}
             <div className="absolute inset-0 border-4 border-white transform rotate-3">
               <div className="w-full h-full bg-gradient-to-br from-electric/20 to-neon/20"></div>
             </div>
@@ -277,13 +174,13 @@ export const About = () => {
             <div className="absolute inset-0 border-4 border-neon transform -rotate-3 translate-x-4 translate-y-4">
               <div className="w-full h-full bg-gradient-to-tl from-neon/10 to-electric/10"></div>
             </div>
-            
-            {/* Integration of the Three.js scene */}
-            <div className="absolute inset-0"> {/* This container holds the Canvas */}
-              <ThreeScene />
+
+            {/* Integration of the new AbstractDigitalStream component */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <AbstractDigitalStream />
             </div>
 
-            {/* Decorative elements (still apply to the container) */}
+            {/* Decorative elements */}
             <motion.div
               className="absolute -top-4 -right-4 w-8 h-8 bg-neon"
               animate={{ rotate: 360 }}
