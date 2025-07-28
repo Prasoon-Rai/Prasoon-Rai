@@ -1,92 +1,80 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+// Removed all previous visual component imports
 
-const AbstractDigitalStream = () => {
-  const characters = ['{', '}', '<', '>', '/', '-', '_', '=', ';', '&', '$', '#', '0', '1'];
-
-  const glitchVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: (i) => ({
-      opacity: [0, 1, 0.5, 1, 0], // Flicker effect
-      y: [20, 0, -5, 0, -20],     // Slight vertical movement
-      x: [0, Math.random() * 5 - 2.5, Math.random() * 5 - 2.5, 0], // Slight horizontal jitter
-      transition: {
-        duration: Math.random() * 3 + 2, // Random duration for varied feel
-        repeat: Infinity,
-        repeatType: "reverse",
-        ease: "easeInOut",
-        delay: Math.random() * 2 + i * 0.1, // Staggered and random initial delay
-      },
-    }),
-  };
-
-  const lineVariants = {
-    initial: { scaleX: 0, opacity: 0 },
-    animate: (i) => ({
-      scaleX: [0, 1, 0.5, 1, 0], // Grow, shrink, grow, disappear
-      opacity: [0, 1, 0.7, 1, 0],
-      transition: {
-        duration: Math.random() * 4 + 3,
-        repeat: Infinity,
-        repeatType: "reverse",
-        ease: "easeInOut",
-        delay: Math.random() * 1.5 + i * 0.2,
-      },
-    }),
-  };
+// --- New EvolvingThoughtscape Component ---
+const EvolvingThoughtscape = () => {
+  const numPaths = 12; // Number of radiating paths
+  const numSparks = 20; // Number of small, fleeting sparks
 
   return (
     <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-      {/* Background data lines / flickering grid */}
-      {Array.from({ length: 10 }).map((_, i) => (
+      {/* Central Pulsating Core / Origin of Thought */}
+      <motion.div
+        className="absolute w-20 h-20 rounded-full bg-neon-dark opacity-30" // Darker neon base
+        initial={{ scale: 0.8 }}
+        animate={{
+          scale: [0.8, 1.1, 0.8],
+          opacity: [0.3, 0.6, 0.3],
+        }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        style={{ filter: 'blur(15px)', boxShadow: '0 0 50px 15px var(--color-neon)' }} // Strong blur for glow
+      />
+
+      {/* Radiating & Intersecting Thought Paths */}
+      {Array.from({ length: numPaths }).map((_, i) => (
         <motion.div
-          key={`bg-line-${i}`}
-          className="absolute h-px bg-electric-glow" // Use bg-electric-glow for a thin glowing line
+          key={`path-${i}`}
+          className={`absolute rounded-full border border-${i % 2 === 0 ? 'electric' : 'neon'}`} // Alternating colors
           style={{
-            width: `${Math.random() * 80 + 20}%`, // Random width for variety
-            top: `${10 + i * 8}%`, // Position vertically
-            left: `${Math.random() * 20}%`, // Slight horizontal offset
-            boxShadow: '0 0 8px var(--color-electric)',
-            opacity: 0.2,
+            width: '100px', // Base width
+            height: '100px', // Base height
+            transform: `rotate(${i * (360 / numPaths)}deg)`, // Rotate each path
+            transformOrigin: '50% 50%', // Rotate around its own center
+            opacity: 0.1, // Subtle base opacity
           }}
-          variants={lineVariants}
-          initial="initial"
-          animate="animate"
-          custom={i}
+          initial={{ scale: 0 }}
+          animate={{
+            scale: [0, 1, 0.5, 1.2, 0], // Expand, contract, expand again, then shrink to disappear
+            opacity: [0, 0.6, 0.4, 0.8, 0], // Fade in/out
+          }}
+          transition={{
+            duration: Math.random() * 6 + 4, // Longer random durations for organic feel
+            repeat: Infinity,
+            ease: "linear",
+            delay: i * 0.3, // Staggered entry
+          }}
         />
       ))}
 
-      {/* Abstract Glitchy Code Fragments */}
-      <div className="absolute inset-0 flex flex-wrap content-around justify-center text-center p-4">
-        {Array.from({ length: 40 }).map((_, i) => (
-          <motion.span
-            key={`char-${i}`}
-            className="font-jetbrains text-lg md:text-xl text-neon-glow leading-none m-1" // neon-glow for text
-            variants={glitchVariants}
-            initial="initial"
-            animate="animate"
-            custom={i}
-            style={{ textShadow: '0 0 10px var(--color-neon)' }} // Text glow
-          >
-            {characters[Math.floor(Math.random() * characters.length)]}
-          </motion.span>
-        ))}
-      </div>
+      {/* Ephemeral Sparks / Insights */}
+      {Array.from({ length: numSparks }).map((_, i) => (
+        <motion.div
+          key={`spark-${i}`}
+          className={`absolute w-1.5 h-1.5 rounded-full ${Math.random() > 0.5 ? 'bg-white' : 'bg-electric-glow'}`}
+          initial={{ x: 0, y: 0, opacity: 0 }}
+          animate={{
+            x: [0, Math.random() * 200 - 100, Math.random() * 200 - 100, 0], // Random movement
+            y: [0, Math.random() * 200 - 100, Math.random() * 200 - 100, 0],
+            opacity: [0, 1, 0], // Appear and fade
+            scale: [0.5, 1.5, 0.5], // Pop in and out
+          }}
+          transition={{
+            duration: Math.random() * 2 + 1, // Quick, fleeting animations
+            repeat: Infinity,
+            delay: Math.random() * 5 + i * 0.2, // Random and staggered delay
+            ease: "easeOut",
+          }}
+          style={{ boxShadow: '0 0 8px var(--color-white)', filter: 'blur(1px)' }} // Soft glow for sparks
+        />
+      ))}
 
-       {/* Central pulsating highlight for focus */}
-       <motion.div
-        className="absolute w-32 h-32 rounded-full bg-white opacity-5"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.05, 0.15, 0.05],
-        }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        style={{ filter: 'blur(30px)' }}
-      />
+      {/* Subtle background noise/texture for digital feel */}
+      <div className="absolute inset-0 noise-texture opacity-10 pointer-events-none"></div>
     </div>
   );
 };
-// --- End of AbstractDigitalStream Component ---
+// --- End of EvolvingThoughtscape Component ---
 
 
 export const About = () => {
@@ -159,7 +147,7 @@ export const About = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right side - Visual element (Animated Digital Stream) */}
+          {/* Right side - Visual element (Evolving Thoughtscape) */}
           <motion.div
             className="relative w-full h-96"
             initial={{ opacity: 0, x: 50 }}
@@ -175,9 +163,9 @@ export const About = () => {
               <div className="w-full h-full bg-gradient-to-tl from-neon/10 to-electric/10"></div>
             </div>
 
-            {/* Integration of the new AbstractDigitalStream component */}
+            {/* Integration of the new EvolvingThoughtscape component */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <AbstractDigitalStream />
+              <EvolvingThoughtscape />
             </div>
 
             {/* Decorative elements */}
