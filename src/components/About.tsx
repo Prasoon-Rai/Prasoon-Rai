@@ -1,106 +1,132 @@
+import React, { useRef, useState, useMemo, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-// Removed all previous visual component imports
+import { Canvas, useFrame } from '@react-three/fiber';
+import * as THREE from 'three';
 
-// --- New EvolvingThoughtscape Component ---
-const EvolvingThoughtscape = () => {
-  const numPaths = 12; // Number of radiating paths
-  const numSparks = 20; // Number of small, fleeting sparks
+// --- Helper to get viewport dimensions ---
+// This will help us define the boundaries for our 3D shape
+function useViewport() {
+  const [size, setSize] = useState({ width: 0, height: 0 });
+  useEffect(() => {
+    const onResize = () => setSize({ width: window.innerWidth, height: window.innerHeight });
+    window.addEventListener('resize', onResize);
+    onResize();
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+  return size;
+}
+
+
+// --- New 3D Floating Shape Component ---
+const FloatingShape = () => {
+  const meshRef = useRef();
+  const [sides, setSides] = useState(3); // Start with a triangle
+
+  // Refs to hold position and velocity to avoid re-renders on each frame
+  const position = useRef([ (Math.random() - 0.5) * 5, (Math.random() - 0.5) * 5, 0]);
+  const velocity = useRef([ (Math.random() - 0.5) * 0.02, (Math.random() - 0.5) * 0.02, 0]);
+  
+  // Memoize the geometry so it only recalculates when 'sides' changes
+  const geometry = useMemo(() => {
+    // We use CircleGeometry to create n-sided polygons easily
+    // The second argument is the number of vertices (sides)
+    return new THREE.CircleGeometry(1.5, sides);
+  }, [sides]);
+
+  useFrame((state) => {
+    if (!meshRef.current) return;
+
+    // Get camera viewport dimensions to define boundaries
+    const { viewport } = state;
+    const bounds = {
+      x: viewport.width / 2,
+      y: viewport.height / 2,
+    };
+
+    // Update position based on velocity
+    position.current[0] += velocity.current[0];
+    position.current[1] += velocity.current[1];
+
+    // Boundary collision detection
+    let hasCollided = false;
+    if (Math.abs(position.current[0]) > bounds.x - 1.5) {
+      velocity.current[0] *= -1; // Reverse x-velocity
+      hasCollided = true;
+    }
+    if (Math.abs(position.current[1]) > bounds.y - 1.5) {
+      velocity.current[1] *= -1; // Reverse y-velocity
+      hasCollided = true;
+    }
+
+    // If a collision occurred, increase the number of sides
+    if (hasCollided) {
+        // Cycle from triangle (3) to decagon (10) and back to triangle
+        setSides(s => (s >= 10 ? 3 : s + 1));
+    }
+    
+    // Apply the new position to the mesh
+    meshRef.current.position.set(position.current[0], position.current[1], position.current[2]);
+    
+    // Add a slow rotation for more visual interest
+    meshRef.current.rotation.z += 0.001;
+  });
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-      {/* Central Pulsating Core / Origin of Thought */}
-      <motion.div
-        className="absolute w-20 h-20 rounded-full bg-neon-dark opacity-30" // Darker neon base
-        initial={{ scale: 0.8 }}
-        animate={{
-          scale: [0.8, 1.1, 0.8],
-          opacity: [0.3, 0.6, 0.3],
-        }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        style={{ filter: 'blur(15px)', boxShadow: '0 0 50px 15px var(--color-neon)' }} // Strong blur for glow
+    <mesh ref={meshRef} geometry={geometry}>
+      <meshStandardMaterial 
+        color="#00ffff" 
+        wireframe 
+        emissive="#00ffff" // Makes the color glow
+        emissiveIntensity={0.5}
       />
+    </mesh>
+  );
+};
 
-      {/* Radiating & Intersecting Thought Paths */}
-      {Array.from({ length: numPaths }).map((_, i) => (
-        <motion.div
-          key={`path-${i}`}
-          className={`absolute rounded-full border border-${i % 2 === 0 ? 'electric' : 'neon'}`} // Alternating colors
-          style={{
-            width: '100px', // Base width
-            height: '100px', // Base height
-            transform: `rotate(${i * (360 / numPaths)}deg)`, // Rotate each path
-            transformOrigin: '50% 50%', // Rotate around its own center
-            opacity: 0.1, // Subtle base opacity
-          }}
-          initial={{ scale: 0 }}
-          animate={{
-            scale: [0, 1, 0.5, 1.2, 0], // Expand, contract, expand again, then shrink to disappear
-            opacity: [0, 0.6, 0.4, 0.8, 0], // Fade in/out
-          }}
-          transition={{
-            duration: Math.random() * 6 + 4, // Longer random durations for organic feel
-            repeat: Infinity,
-            ease: "linear",
-            delay: i * 0.3, // Staggered entry
-          }}
-        />
-      ))}
 
-      {/* Ephemeral Sparks / Insights */}
-      {Array.from({ length: numSparks }).map((_, i) => (
-        <motion.div
-          key={`spark-${i}`}
-          className={`absolute w-1.5 h-1.5 rounded-full ${Math.random() > 0.5 ? 'bg-white' : 'bg-electric-glow'}`}
-          initial={{ x: 0, y: 0, opacity: 0 }}
-          animate={{
-            x: [0, Math.random() * 200 - 100, Math.random() * 200 - 100, 0], // Random movement
-            y: [0, Math.random() * 200 - 100, Math.random() * 200 - 100, 0],
-            opacity: [0, 1, 0], // Appear and fade
-            scale: [0.5, 1.5, 0.5], // Pop in and out
-          }}
-          transition={{
-            duration: Math.random() * 2 + 1, // Quick, fleeting animations
-            repeat: Infinity,
-            delay: Math.random() * 5 + i * 0.2, // Random and staggered delay
-            ease: "easeOut",
-          }}
-          style={{ boxShadow: '0 0 8px var(--color-white)', filter: 'blur(1px)' }} // Soft glow for sparks
-        />
-      ))}
+// --- The 3D Scene Container ---
+const ThreeScene = () => {
+  return (
+    <div className="absolute inset-0 z-0 w-full h-full">
+      <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
+        {/* Lighting to make the wireframe material visible */}
+        <ambientLight intensity={0.5} />
+        <pointLight position={[10, 10, 10]} intensity={1} />
+        
+        <FloatingShape />
 
-      {/* Subtle background noise/texture for digital feel */}
-      <div className="absolute inset-0 noise-texture opacity-10 pointer-events-none"></div>
+      </Canvas>
     </div>
   );
 };
-// --- End of EvolvingThoughtscape Component ---
 
 
-export const About = () => {
+// --- The Main About Component ---
+const App = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" ref={ref} className="py-20 bg-black text-white noise-texture">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left side - Text content */}
+    <section id="about" ref={ref} className="relative py-20 min-h-screen bg-black text-white overflow-hidden">
+      
+      {/* 3D background is placed here, behind the content */}
+      <ThreeScene />
+
+      {/* Content container, positioned on top of the 3D scene */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center h-full">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="space-y-8"
+            className="space-y-8 max-w-2xl text-center" // Centered text for better layout
           >
             <motion.h2
-              className="brutalist-heading text-5xl md:text-6xl text-white"
+              className="text-5xl md:text-6xl font-bold text-white"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              ABOUT
-              <br />
-              <span className="text-neon">ME</span>
+              ABOUT <span className="text-[#00ffff]">ME</span>
             </motion.h2>
 
             <motion.div
@@ -109,25 +135,25 @@ export const About = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <p className="font-space text-lg md:text-xl leading-relaxed text-gray-300">
+              <p className="text-lg md:text-xl leading-relaxed text-gray-300">
                 I'm <span className="text-white font-bold">Prasoon Rai</span>,
-                a 17-year-old AI/DL programmer from <span className="text-neon font-bold">Noida, India </span>
+                a 17-year-old AI/DL programmer from <span className="text-[#00ffff] font-bold">Noida, India</span>.
                 I started coding at 10 and quickly developed a passion for Artificial Intelligence and Deep Learning.
               </p>
 
-              <p className="font-space text-lg md:text-xl leading-relaxed text-gray-300">
-                I'm proficient in <span className="text-neon font-bold">TensorFlow, PyTorch, and Keras </span>using these frameworks to build practical AI solutions.
+              <p className="text-lg md:text-xl leading-relaxed text-gray-300">
+                I'm proficient in <span className="text-[#00ffff] font-bold">TensorFlow, PyTorch, and Keras</span>, using these frameworks to build practical AI solutions.
                 I love turning complex ideas into working applications.
               </p>
 
-              <p className="font-space text-lg md:text-xl leading-relaxed text-gray-300">
-                My goal is to study abroad and become a <span className="text-white font-bold">Computer Science Engineer </span>
+              <p className="text-lg md:text-xl leading-relaxed text-gray-300">
+                My goal is to study abroad and become a <span className="text-white font-bold">Computer Science Engineer</span>.
                 I'm excited to innovate in the tech world and contribute to the future of AI.
               </p>
             </motion.div>
 
             <motion.div
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-4 justify-center" // Centered skills
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -135,53 +161,20 @@ export const About = () => {
               {['TENSORFLOW', 'PYTORCH', 'PYTHON', 'LLAMA', 'GIT', 'KERAS'].map((skill, index) => (
                 <motion.span
                   key={skill}
-                  className="border-2 border-electric text-electric px-4 py-2 font-jetbrains font-bold text-sm tracking-widest hover:bg-electric hover:text-black transition-all duration-300 cursor-default"
+                  className="border-2 border-[#00ffff] text-[#00ffff] px-4 py-2 font-mono font-bold text-sm tracking-widest hover:bg-[#00ffff] hover:text-black transition-all duration-300 cursor-default rounded-md"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.05, boxShadow: '0 0 15px #00ffff' }}
                 >
                   {skill}
                 </motion.span>
               ))}
             </motion.div>
           </motion.div>
-
-          {/* Right side - Visual element (Evolving Thoughtscape) */}
-          <motion.div
-            className="relative w-full h-96"
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            {/* These outer frames and decorative elements are kept for the brutalist style */}
-            <div className="absolute inset-0 border-4 border-white transform rotate-3">
-              <div className="w-full h-full bg-gradient-to-br from-electric/20 to-neon/20"></div>
-            </div>
-
-            <div className="absolute inset-0 border-4 border-neon transform -rotate-3 translate-x-4 translate-y-4">
-              <div className="w-full h-full bg-gradient-to-tl from-neon/10 to-electric/10"></div>
-            </div>
-
-            {/* Integration of the new EvolvingThoughtscape component */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <EvolvingThoughtscape />
-            </div>
-
-            {/* Decorative elements */}
-            <motion.div
-              className="absolute -top-4 -right-4 w-8 h-8 bg-neon"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.div
-              className="absolute -bottom-4 -left-4 w-6 h-6 border-4 border-electric"
-              animate={{ rotate: -360 }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            />
-          </motion.div>
-        </div>
       </div>
     </section>
   );
 };
+
+export default App;
