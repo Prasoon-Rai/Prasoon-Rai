@@ -1,29 +1,50 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { CustomCursor } from "@/components/CustomCursor";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { Hero } from "@/components/Hero";
+import { Marquee } from "@/components/Marquee";
+import { About } from "@/components/About";
+import { Projects } from "@/components/Projects";
+import { Contact } from "@/components/Contact";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Prasoon Rai — Developer & Maker" },
+      {
+        name: "description",
+        content:
+          "Portfolio of Prasoon Rai — a developer building odd, opinionated, very-much-not-boring software. Open source projects, contact, and more.",
+      },
+      { property: "og:title", content: "Prasoon Rai — Developer & Maker" },
+      {
+        property: "og:description",
+        content: "Portfolio of Prasoon Rai — developer, maker, ship-it enthusiast.",
+      },
+    ],
+    links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Archivo+Black&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap",
+      },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <SmoothScroll>
+      <CustomCursor />
+      <main className="relative">
+        <Hero />
+        <Marquee items={["Developer", "Maker", "Open Source", "Based in India", "Available for work", "Prasoon Rai"]} />
+        <About />
+        <Projects />
+        <Contact />
+      </main>
+    </SmoothScroll>
   );
 }
