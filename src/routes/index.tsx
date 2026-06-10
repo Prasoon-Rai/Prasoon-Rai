@@ -42,7 +42,7 @@ function Index() {
       <TypeListener />
       <main className="relative">
         <Hero />
-        <Marquee items={["Rust", "C", "Python", "Pytorch", "Raylib"]} />
+        <Marquee items={["Rust", "C / C++", "Python", "Pytorch", "Raylib"]} />
         <About />
         <div className="relative overflow-hidden border-y-2 border-foreground bg-warm py-4 text-background">
           <div className="flex animate-marquee whitespace-nowrap font-mono text-xs uppercase tracking-[0.3em]">
