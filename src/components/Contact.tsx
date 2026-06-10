@@ -54,7 +54,7 @@ export function Contact() {
 
         <div className="mt-24 flex flex-wrap items-end justify-between gap-4 border-t-2 border-background pt-6 text-xs uppercase tracking-widest opacity-70">
           <span>© Prasoon Rai · 2026</span>
-          <span>Made with too much yellow ✦</span>
+          <span className="font-mono">psst — type "dark" or "light" anywhere ✦</span>
         </div>
       </div>
     </section>
