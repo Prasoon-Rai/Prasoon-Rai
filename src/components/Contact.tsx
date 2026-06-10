@@ -14,7 +14,7 @@ export function Contact() {
         >
           Got an idea?
           <br />
-          Let's <span className="text-primary not-italic">build</span> it.
+          Let's <span className="not-italic text-white dark:text-primary">build</span> it.
         </motion.h2>
 
         <div className="mt-16 grid grid-cols-1 gap-10 md:grid-cols-2">
@@ -54,7 +54,7 @@ export function Contact() {
 
         <div className="mt-24 flex flex-wrap items-end justify-between gap-4 border-t-2 border-background pt-6 text-xs uppercase tracking-widest opacity-70">
           <span>© Prasoon Rai · 2026</span>
-          <span className="font-mono">psst — type "dark" or "light" anywhere ✦</span>
+          
         </div>
       </div>
     </section>

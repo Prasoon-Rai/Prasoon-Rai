@@ -15,7 +15,7 @@ export function Hero() {
       {/* Top bar */}
       <div className="relative z-10 flex items-center justify-between text-xs uppercase tracking-widest md:text-sm">
         <span className="font-semibold">Prasoon Rai™</span>
-        <span className="hidden font-mono text-warm md:inline">★ Caffeine-powered · Est. 2002</span>
+        <span className="hidden font-mono text-warm md:inline">★ Nicotine-powered · Est. 2008</span>
         <span>Based in India ✈</span>
       </div>
 
@@ -57,7 +57,7 @@ export function Hero() {
         <p className="font-[var(--font-serif)] text-xl leading-snug md:col-span-7 md:text-3xl">
           Part developer, part chaos goblin, full-time fan of shipping things that
           make people go <em>"wait, what?"</em> I build odd, opinionated, very-much-not-boring
-          software — and occasionally trick the internet into smiling.
+          software — and occasionally cooking pizza.
         </p>
         <div className="flex flex-col gap-2 text-sm uppercase tracking-widest md:col-span-5 md:items-end md:text-right">
           <a href="#projects" data-cursor="hover" className="underline-offset-4 hover:underline">↓ The receipts (projects)</a>

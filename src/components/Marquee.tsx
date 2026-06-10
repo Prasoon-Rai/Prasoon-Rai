@@ -6,9 +6,9 @@ export function Marquee({ items }: { items: string[] }) {
         {row.map((t, i) => (
           <span
             key={i}
-            className="mx-8 font-[var(--font-display)] text-3xl uppercase tracking-tight text-background md:text-5xl"
+            className="mx-8 font-(--font-display) text-3xl uppercase tracking-tight text-background md:text-5xl"
           >
-            {t} <span className="mx-6 inline-block text-primary">✦</span>
+            {t} <span className="mx-6 inline-block text-white dark:text-primary">✦</span>
           </span>
         ))}
       </div>

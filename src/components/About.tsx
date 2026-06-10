@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
-import portrait from "@/assets/prasoon-portrait.jpg.asset.json";
+import portrait from "@/assets/prasoon.jpg";
 
 const experiences = [
-  { when: "2024 — Now", what: "Shipping weird little internet things", where: "Independent" },
-  { when: "2023", what: "Breaking & fixing open source", where: "GitHub / Various" },
-  { when: "2022", what: "First serious lines of code", where: "Mostly self-taught, partly Stack Overflow" },
+  { when: "2026 - Now", what: "Got back and started learning Pytorch in a structured manner", where: "Goal is to become proficient in deep learning" },
+  { when: "2025", what: "Shifted my interest to C and Rust", where: "Self-taught C and Rust and built multiple graphics related projects" },
+  { when: "2024", what: "Started showing interest in artificial intelligence", where: "Went on to learn about LLMs, finetuning etc." },
+  { when: "2023", what: "Participated and won multiple hackathons and interschool competitions", where: "Took a boost!" },
+  { when: "2021", what: "Started my python journey", where: "Developed my own assistant in python." },
 ];
 
 const values = ["Curious", "Opinionated", "Playful", "Detail-obsessed", "Ship > perfect", "Probably overthinking it"];
@@ -35,11 +37,11 @@ export function About() {
             transition={{ duration: 0.8 }}
             className="md:col-span-4"
           >
-            <div className="relative aspect-[4/5] overflow-hidden border-2 border-foreground bg-warm">
+            <div className="relative aspect-4/5 overflow-hidden border-2 border-foreground bg-warm">
               <img
-                src={portrait.url}
+                src={portrait}
                 alt="Prasoon Rai — portrait"
-                className="absolute inset-0 h-full w-full object-cover grayscale-[20%] contrast-105"
+                className="absolute inset-0 h-full w-full object-cover grayscale-20 contrast-105"
               />
               {/* warm gray frame tag */}
               <div className="absolute left-2 top-2 flex items-center gap-1 bg-warm px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-background">
@@ -54,10 +56,10 @@ export function About() {
               ))}
             </div>
             <div className="mt-4 flex items-baseline justify-between text-sm">
-              <span className="font-[var(--font-display)] uppercase">Prasoon Rai</span>
+              <span className="font-(--font-display) uppercase">Prasoon Rai</span>
               <span className="text-muted-foreground">Developer • India</span>
             </div>
-            <p className="mt-2 font-[var(--font-serif)] text-sm italic text-warm">
+            <p className="mt-2 font-(--font-serif) text-sm italic text-warm">
               "Yes, the hair has a mind of its own. We've made peace."
             </p>
           </motion.div>
@@ -73,11 +75,11 @@ export function About() {
             <span className="inline-block rounded-full border-2 border-foreground px-4 py-1 text-xs uppercase tracking-widest">
               Hi, I'm Prasoon
             </span>
-            <p className="mt-6 font-[var(--font-serif)] text-2xl leading-snug md:text-3xl">
-              A developer with strong opinions about button radii and an even stronger
+            <p className="mt-6 font-(--font-serif) text-2xl leading-snug md:text-3xl">
+              A teen developer with keen interest in domain of artificial intelligence and an even stronger
               opinion that software should feel like <em>something</em>. I obsess over
               interfaces, ship side projects on weekends, and have lost actual hours
-              of my life to picking the right typeface.
+              of my life to picking the right feel.
             </p>
 
             <div className="mt-10 space-y-6">
@@ -86,7 +88,7 @@ export function About() {
                 <a
                   href="mailto:prasoonrai@icloud.com"
                   data-cursor="hover"
-                  className="block font-[var(--font-serif)] text-xl underline-offset-4 hover:underline md:text-2xl"
+                  className="block font-(--font-serif) text-xl underline-offset-4 hover:underline md:text-2xl"
                 >
                   prasoonrai@icloud.com
                 </a>
@@ -100,7 +102,7 @@ export function About() {
                     target="_blank"
                     rel="noreferrer"
                     data-cursor="hover"
-                    className="font-[var(--font-serif)] text-lg hover:underline"
+                    className="font-(--font-serif) text-lg hover:underline"
                   >
                     @prasoon_raii
                   </a>
@@ -112,7 +114,7 @@ export function About() {
                     target="_blank"
                     rel="noreferrer"
                     data-cursor="hover"
-                    className="font-[var(--font-serif)] text-lg hover:underline"
+                    className="font-(--font-serif) text-lg hover:underline"
                   >
                     @Prasoon-Rai
                   </a>
@@ -134,7 +136,7 @@ export function About() {
               {experiences.map((e) => (
                 <li key={e.what}>
                   <div className="text-xs uppercase tracking-widest text-muted-foreground">{e.when}</div>
-                  <div className="font-[var(--font-serif)] italic">{e.what}</div>
+                  <div className="font-(--font-serif) italic">{e.what}</div>
                   <div className="text-sm">{e.where}</div>
                 </li>
               ))}
