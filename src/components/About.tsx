@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
+import portrait from "@/assets/prasoon-portrait.jpg.asset.json";
 
 const experiences = [
-  { when: "2024 — Now", what: "Building things that ship", where: "Independent" },
-  { when: "2023", what: "Open Source Contributor", where: "GitHub / Various" },
-  { when: "2022", what: "Started writing serious code", where: "Self-taught" },
+  { when: "2024 — Now", what: "Shipping weird little internet things", where: "Independent" },
+  { when: "2023", what: "Breaking & fixing open source", where: "GitHub / Various" },
+  { when: "2022", what: "First serious lines of code", where: "Mostly self-taught, partly Stack Overflow" },
 ];
 
-const values = ["Curious", "Opinionated", "Playful", "Detail-obsessed", "Ship > perfect"];
+const values = ["Curious", "Opinionated", "Playful", "Detail-obsessed", "Ship > perfect", "Probably overthinking it"];
 
 export function About() {
   return (

@@ -15,15 +15,18 @@ export function Hero() {
       {/* Top bar */}
       <div className="relative z-10 flex items-center justify-between text-xs uppercase tracking-widest md:text-sm">
         <span className="font-semibold">Prasoon Rai™</span>
-        <span className="hidden md:inline">Portfolio / 2026</span>
+        <span className="hidden font-mono text-warm md:inline">★ Caffeine-powered · Est. 2002</span>
         <span>Based in India ✈</span>
       </div>
 
       {/* Big stack */}
       <motion.div style={{ y, opacity }} className="relative z-10 -mx-2 mt-8">
         <h1 className="font-[var(--font-serif)] text-3xl italic leading-none md:text-5xl">
-          Hey, Welcome to the{" "}
-          <span className="italic">Wonderfully Weirdo World of</span>
+          Buckle up — you've wandered into the{" "}
+          <span className="italic">wonderfully weirdo world of</span>
+          <span className="ml-3 inline-block rotate-[-4deg] rounded-md bg-warm px-2 py-0.5 align-middle text-base not-italic uppercase tracking-widest text-background md:text-lg">
+            yes, that guy
+          </span>
         </h1>
 
         <div className="relative mt-2 flex items-center justify-center">
@@ -52,14 +55,14 @@ export function Hero() {
       {/* Sub copy */}
       <div className="relative z-10 mt-10 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-12">
         <p className="font-[var(--font-serif)] text-xl leading-snug md:col-span-7 md:text-3xl">
-          I'm a developer who loves building odd, opinionated, very-much-not-boring
-          software. I collect ideas, ship them with friends, and occasionally make
-          things on the internet that make people smile.
+          Part developer, part chaos goblin, full-time fan of shipping things that
+          make people go <em>"wait, what?"</em> I build odd, opinionated, very-much-not-boring
+          software — and occasionally trick the internet into smiling.
         </p>
         <div className="flex flex-col gap-2 text-sm uppercase tracking-widest md:col-span-5 md:items-end md:text-right">
-          <a href="#projects" data-cursor="hover" className="underline-offset-4 hover:underline">↓ See the projects</a>
-          <a href="#about" data-cursor="hover" className="underline-offset-4 hover:underline">↓ About me</a>
-          <a href="#contact" data-cursor="hover" className="underline-offset-4 hover:underline">↓ Get in touch</a>
+          <a href="#projects" data-cursor="hover" className="underline-offset-4 hover:underline">↓ The receipts (projects)</a>
+          <a href="#about" data-cursor="hover" className="underline-offset-4 hover:underline">↓ About this guy</a>
+          <a href="#contact" data-cursor="hover" className="underline-offset-4 hover:underline">↓ Slide into the inbox</a>
         </div>
       </div>
     </section>
