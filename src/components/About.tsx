@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import portrait from "@/assets/prasoon.jpg";
+import portrait from "@/assets/prasoon.JPG";
 
 const experiences = [
   { when: "2026 - Now", what: "Got back and started learning Pytorch in a structured manner", where: "Goal is to become proficient in deep learning" },
