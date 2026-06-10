@@ -35,28 +35,31 @@ export function About() {
             transition={{ duration: 0.8 }}
             className="md:col-span-4"
           >
-            <div className="relative aspect-[4/5] overflow-hidden border-2 border-foreground bg-background">
-              {/* blueprint grid */}
-              <div
-                className="absolute inset-0 opacity-40"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(var(--color-foreground) 1px, transparent 1px), linear-gradient(90deg, var(--color-foreground) 1px, transparent 1px)",
-                  backgroundSize: "32px 32px",
-                }}
+            <div className="relative aspect-[4/5] overflow-hidden border-2 border-foreground bg-warm">
+              <img
+                src={portrait.url}
+                alt="Prasoon Rai — portrait"
+                className="absolute inset-0 h-full w-full object-cover grayscale-[20%] contrast-105"
               />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="font-[var(--font-display)] text-[8rem] leading-none">P</span>
+              {/* warm gray frame tag */}
+              <div className="absolute left-2 top-2 flex items-center gap-1 bg-warm px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-background">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" /> rec · 002
+              </div>
+              <div className="absolute bottom-2 right-2 bg-background px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-foreground">
+                ƒ/2.8 · 35mm
               </div>
               {/* corner brackets */}
-              {["top-2 left-2", "top-2 right-2", "bottom-2 left-2", "bottom-2 right-2"].map((p) => (
-                <div key={p} className={`absolute h-4 w-4 border-2 border-foreground bg-background ${p}`} />
+              {["top-2 right-2 hidden", "bottom-2 left-2"].map((p) => (
+                <div key={p} className={`absolute h-3 w-3 border-2 border-background ${p}`} />
               ))}
             </div>
             <div className="mt-4 flex items-baseline justify-between text-sm">
               <span className="font-[var(--font-display)] uppercase">Prasoon Rai</span>
               <span className="text-muted-foreground">Developer • India</span>
             </div>
+            <p className="mt-2 font-[var(--font-serif)] text-sm italic text-warm">
+              "Yes, the hair has a mind of its own. We've made peace."
+            </p>
           </motion.div>
 
           {/* Middle: bio + contact */}
@@ -71,9 +74,10 @@ export function About() {
               Hi, I'm Prasoon
             </span>
             <p className="mt-6 font-[var(--font-serif)] text-2xl leading-snug md:text-3xl">
-              A developer who loves making things that feel a little weird and a lot
-              useful. I obsess over interfaces, ship side projects on weekends, and
-              spend too much time picking fonts.
+              A developer with strong opinions about button radii and an even stronger
+              opinion that software should feel like <em>something</em>. I obsess over
+              interfaces, ship side projects on weekends, and have lost actual hours
+              of my life to picking the right typeface.
             </p>
 
             <div className="mt-10 space-y-6">
