@@ -12,9 +12,9 @@ export function Contact() {
           transition={{ duration: 0.8 }}
           className="mt-4 font-[var(--font-serif)] text-5xl italic leading-[0.95] md:text-8xl"
         >
-          Got an idea?
+          Hit me up!
           <br />
-          Let's <span className="not-italic text-white dark:text-primary">build</span> it.
+          Let's <span className="not-italic text-white dark:text-primary">cook</span> something.
         </motion.h2>
 
         <div className="mt-16 grid grid-cols-1 gap-10 md:grid-cols-2">
