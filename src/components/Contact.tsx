@@ -4,7 +4,7 @@ export function Contact() {
   return (
     <section id="contact" className="relative bg-foreground px-6 py-24 text-background md:px-12 md:py-40">
       <div className="mx-auto max-w-7xl">
-        <span className="text-xs uppercase tracking-widest opacity-60">(03) Say hi</span>
+        <span className="text-xs uppercase tracking-widest opacity-60">(04) Say hi</span>
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
