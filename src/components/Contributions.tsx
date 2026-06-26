@@ -111,18 +111,14 @@ export function Contributions() {
   const [ncError, setNcError] = useState<string | null>(null);
 
   useEffect(() => {
-    const url = "https://alfa-leetcode-api.onrender.com/userProfileCalendar?username=prasoon-rai";
+    const url = "https://leetcode-api-faisalshohag.vercel.app/prasoon-rai";
     fetch(url)
       .then((r) => {
         if (!r.ok) throw new Error("api " + r.status);
         return r.json();
       })
       .then((data) => {
-        const raw =
-          data?.data?.matchedUser?.userCalendar?.submissionCalendar ??
-          data?.submissionCalendar ??
-          null;
-        const obj = typeof raw === "string" ? JSON.parse(raw) : raw;
+        const obj = data?.submissionCalendar;
         if (!obj) throw new Error("no calendar");
         const counts: Counts = {};
         for (const [ts, n] of Object.entries(obj)) {
