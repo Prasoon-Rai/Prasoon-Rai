@@ -47,7 +47,7 @@ export function Projects() {
           className="mb-16 flex flex-wrap items-end justify-between gap-4"
         >
           <div>
-            <span className="text-xs uppercase tracking-widest text-muted-foreground">(02) Open Source</span>
+            <span className="text-xs uppercase tracking-widest text-muted-foreground">(03) Open Source</span>
             <h2 className="mt-2 text-5xl md:text-7xl">Projects / GitHub</h2>
           </div>
           <a
