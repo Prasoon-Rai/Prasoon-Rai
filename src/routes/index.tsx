@@ -6,7 +6,9 @@ import { Hero } from "@/components/Hero";
 import { Marquee } from "@/components/Marquee";
 import { About } from "@/components/About";
 import { Projects } from "@/components/Projects";
+import { Contributions } from "@/components/Contributions";
 import { Contact } from "@/components/Contact";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -44,18 +46,9 @@ function Index() {
         <Hero />
         <Marquee items={["Rust", "C / C++", "Python", "Pytorch", "Raylib"]} />
         <About />
-        <div className="relative overflow-hidden border-y-2 border-foreground bg-warm py-4 text-background">
-          <div className="flex animate-marquee whitespace-nowrap font-mono text-xs uppercase tracking-[0.3em]">
-            {Array.from({ length: 2 }).map((_, k) => (
-              <div key={k} className="flex">
-                {["Lowkey chill", "hit me up on instagram", "Hope future would be cool", "Hope ray would be successful", "yellow #FEE500 forever"].map((t, i) => (
-                  <span key={i} className="mx-6">— {t}</span>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
+        <Contributions />
         <Projects />
+
         <Contact />
       </main>
     </SmoothScroll>
