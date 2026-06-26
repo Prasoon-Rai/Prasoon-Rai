@@ -223,10 +223,10 @@ export function Contributions() {
           transition={{ duration: 0.8 }}
           className="mb-12"
         >
-          <span className="text-xs uppercase tracking-widest text-muted-foreground">(03) Receipts</span>
-          <h2 className="mt-2 text-5xl md:text-7xl">Grind / Heatmap</h2>
+          <span className="text-xs uppercase tracking-widest text-muted-foreground">(02) DSA</span>
+          <h2 className="mt-2 text-5xl md:text-7xl">DSA Grind</h2>
           <p className="mt-4 max-w-2xl font-[var(--font-serif)] text-xl italic text-muted-foreground">
-            one square per day. yellow = LeetCode. warm gray = NeetCode. mixed gold = both. darker means louder.
+            Aiming one square per day. Because- darker means louder.
           </p>
         </motion.div>
 
