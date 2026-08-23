@@ -4,8 +4,8 @@
 
 **Prasoon** — Teen programmer with keen interest in systems programming.
 
-- ⚙️ Rust · C · Python · embedded
-- 🌱 Learning graphics programming
-- 🎭 [Check Out](https://prasoon.codes)
+⚙️ Rust · C · Python · embedded
+🌱 Learning graphics programming
+🎭 [Check Out](https://prasoon.codes)
 
 <br clear="left" />
