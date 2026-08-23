@@ -2,11 +2,10 @@
 
 ### `> whoami`
 
-**Your Name** — one-line tagline (e.g. systems programmer, graphics nerd).
+**Prasoon** — Teen programmer with keen interest in systems programming.
 
-- 🔭 Currently building **project**
 - ⚙️ Rust · C · Python · embedded
-- 🌱 Learning **something**
-- 📫 [email](mailto:you@example.com) · [site](https://example.com)
+- 🌱 Learning graphics programming
+- 🎭 [Check Out](https://prasoon.codes)
 
 <br clear="left" />
